@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import  FirstComponent  from './components/FirstComponent';
+import FirstComponent from './components/FirstComponent';
 
 let age = 39;
 var email = 'xyz@gmail.com';
@@ -15,11 +15,15 @@ const App = () => {
       <Text>{fruit()}</Text>
       <Text>{3 * 2}</Text>
       <Text>{age === 39 ? 'OldAge' : 'YoungAge'}</Text>
-      <Button title="Press Here"></Button>
+      <Button title="Press Here" onPress={() => ButtonPress("Button is pressed")}></Button>
       <FirstComponent />
       <StatusBar style="auto" />
     </View>
   );
+}
+
+function ButtonPress(val) {
+  console.warn(val)
 }
 
 function fruit() {
