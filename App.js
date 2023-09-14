@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import FirstComponent from './components/FirstComponent';
 import { useState } from 'react';
 import ExStyles from './css/MainCSS';
+import CustomButton from './components/CustomButton';
 
 let age = 39;
 var email = 'xyz@gmail.com';
@@ -15,24 +16,24 @@ const App = () => {
   return (
     <View style={styles.container}>
       <Text>Welcome to freya's app.Hii!!  from freya</Text>
-      <Text style = {[styles.textbox,ExStyles.textbox,{padding:10,borderRadius:10}]}>{name}</Text>
+      <Text style={[styles.textbox, ExStyles.textbox, { padding: 10, borderRadius: 10 }]}>{name}</Text>
       <Text>{age}</Text>
       <Text>{email}</Text>
       <Text>{fruit()}</Text>
       <Text>{3 * 2}</Text>
       <Text>{age === 39 ? 'OldAge' : 'YoungAge'}</Text>
       <Text> State Name : {GetName} </Text>
-      <Button title="Press Here" onPress={() => ButtonPress("Button is pressed")}></Button>
+      <CustomButton buttonTitle="Press Here" />
       <Button title="Update Name" onPress={ChangeName}></Button>
-      <FirstComponent name={GetName}/>
+      <FirstComponent name={GetName} />
+      <TextInput style={ExStyles.textinput} value={GetName} placeholder='Enter Your Name' onChangeText={(text) => SetName(text)} />
+      <CustomButton buttonTitle="Clear Input" />
       <StatusBar style="auto" />
     </View>
   );
 }
 
-function ButtonPress(val) {
-  console.warn(val)
-}
+
 
 function fruit() {
   return 'apple';
@@ -45,9 +46,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  textbox:{
-    borderColor:'red',
-    borderWidth:5
-  }
+  textbox: {
+    borderColor: 'red',
+    borderWidth: 5
+  },
 });
 export default App;
