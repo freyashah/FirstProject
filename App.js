@@ -23,7 +23,7 @@ const App = () => {
       <Text> State Name : {GetName} </Text>
       <Button title="Press Here" onPress={() => ButtonPress("Button is pressed")}></Button>
       <Button title="Update Name" onPress={ChangeName}></Button>
-      <FirstComponent />
+      <FirstComponent name={GetName}/>
       <StatusBar style="auto" />
     </View>
   );

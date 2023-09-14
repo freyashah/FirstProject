@@ -1,18 +1,20 @@
 import { StyleSheet, View, Text } from 'react-native'
-const FirstComponent = () => {
+const FirstComponent = (params) => {
     return (
-        <View styles={styles.component}>
+        <View style={{backgroundColor:'green',padding:5}}>
             <Text>
                 This is component number 1
             </Text>
+            <Text>Name:{params.name}</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    component: {
+    componentstyle: {
         fontSize: 20,
-        backgroundColor: 'blue'
+        backgroundColor: 'blue',
+        padding:40
     }
 })
 
