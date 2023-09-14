@@ -1,11 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import FirstComponent from './components/FirstComponent';
+import { useState } from 'react';
 
 let age = 39;
 var email = 'xyz@gmail.com';
 const App = () => {
   const name = 'sima'
+  const [GetName, SetName] = useState('Freya');
+  function ChangeName() {
+    SetName('FreyaDShah')
+  }
   return (
     <View style={styles.container}>
       <Text>Welcome to freya's app.Hii!!  from freya</Text>
@@ -15,7 +20,9 @@ const App = () => {
       <Text>{fruit()}</Text>
       <Text>{3 * 2}</Text>
       <Text>{age === 39 ? 'OldAge' : 'YoungAge'}</Text>
+      <Text> State Name : {GetName} </Text>
       <Button title="Press Here" onPress={() => ButtonPress("Button is pressed")}></Button>
+      <Button title="Update Name" onPress={ChangeName}></Button>
       <FirstComponent />
       <StatusBar style="auto" />
     </View>
