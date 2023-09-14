@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import FirstComponent from './components/FirstComponent';
 import { useState } from 'react';
+import ExStyles from './css/MainCSS';
 
 let age = 39;
 var email = 'xyz@gmail.com';
@@ -14,7 +15,7 @@ const App = () => {
   return (
     <View style={styles.container}>
       <Text>Welcome to freya's app.Hii!!  from freya</Text>
-      <Text>{name}</Text>
+      <Text style = {[styles.textbox,ExStyles.textbox,{padding:10,borderRadius:10}]}>{name}</Text>
       <Text>{age}</Text>
       <Text>{email}</Text>
       <Text>{fruit()}</Text>
@@ -44,5 +45,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  textbox:{
+    borderColor:'red',
+    borderWidth:5
+  }
 });
 export default App;
