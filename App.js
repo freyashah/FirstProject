@@ -30,34 +30,34 @@ const App = () => {
   },]
   const studentreport = [
     {
-      id:1,
-      name:'freya',
-      data:[
+      id: 1,
+      name: 'freya',
+      data: [
         {
-          id:1,
-          subject:'CS',
-          marks:20
+          id: 1,
+          subject: 'CS',
+          marks: 20
         },
         {
-          id:2,
-          subject:'Engish',
-          marks:10
+          id: 2,
+          subject: 'Engish',
+          marks: 10
         }
       ]
     },
     {
-      id:2,
-      name:'dhruval',
-      data:[
+      id: 2,
+      name: 'dhruval',
+      data: [
         {
-          id:1,
-          subject:'CS',
-          marks:10
+          id: 1,
+          subject: 'CS',
+          marks: 10
         },
         {
-          id:2,
-          subject:'Engish',
-          marks:20
+          id: 2,
+          subject: 'Engish',
+          marks: 20
         }
       ]
     }
@@ -83,25 +83,25 @@ const App = () => {
         secureTextEntry={DisplayPassword} />
       <Button title='View Password' onPress={() => SetDisplayPassword(!DisplayPassword)}></Button>
       <Button title='Clear Password' onPress={() => Setpassword('')}></Button>
-      <FlatList data={users} renderItem={({ item }) => <Text style={styles.textbox}>{item.name}</Text>}
+      <FlatList data={users} horizontal={true} renderItem={({ item }) => <Text style={styles.textbox}>{item.name}</Text>}
         keyExtractor={item => item.id} />
       <ScrollView>
         <View style={styles.grid}>{
           emails.map((item) => <Text style={styles.griditem}>{item.text}</Text>)
         }</View>
       </ScrollView>
-      <FlatList data={emails} renderItem={({ item }) => <GridData itemlist = {item}/>}
+      <FlatList data={emails} horizontal={true} renderItem={({ item }) => <GridData itemlist={item} />}
         keyExtractor={item => item.id} />
-        <SectionList sections={studentreport} renderItem={({item}) => <Text>{item.subject} - {item.marks} </Text>} 
-        renderSectionHeader={({section:{name}}) => <Text>{name}</Text>}/>
+      <SectionList horizontal={true} sections={studentreport} renderItem={({ item }) => <Text>{item.subject} - {item.marks} </Text>}
+        renderSectionHeader={({ section: { name } }) => <Text>{name}</Text>} />
     </View>
   );
 }
 
-const GridData = (props) =>{
-  return(
+const GridData = (props) => {
+  return (
     <View style={styles.grid}>
-<Text style={styles.griditem}>{props.itemlist.text}</Text>
+      <Text style={styles.griditem}>{props.itemlist.text}</Text>
     </View>
   )
 }
