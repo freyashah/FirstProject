@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, TextInput, FlatList, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, FlatList, ScrollView, SectionList } from 'react-native';
 import FirstComponent from './components/FirstComponent';
 import { useState } from 'react';
 import ExStyles from './css/MainCSS';
@@ -28,6 +28,40 @@ const App = () => {
     id: 2,
     text: 'dhruval@test.com'
   },]
+  const studentreport = [
+    {
+      id:1,
+      name:'freya',
+      data:[
+        {
+          id:1,
+          subject:'CS',
+          marks:20
+        },
+        {
+          id:2,
+          subject:'Engish',
+          marks:10
+        }
+      ]
+    },
+    {
+      id:2,
+      name:'dhruval',
+      data:[
+        {
+          id:1,
+          subject:'CS',
+          marks:10
+        },
+        {
+          id:2,
+          subject:'Engish',
+          marks:20
+        }
+      ]
+    }
+  ]
   function ChangeName() {
     SetName('FreyaDShah')
   }
@@ -58,6 +92,8 @@ const App = () => {
       </ScrollView>
       <FlatList data={emails} renderItem={({ item }) => <GridData itemlist = {item}/>}
         keyExtractor={item => item.id} />
+        <SectionList sections={studentreport} renderItem={({item}) => <Text>{item.subject} - {item.marks} </Text>} 
+        renderSectionHeader={({section:{name}}) => <Text>{name}</Text>}/>
     </View>
   );
 }
