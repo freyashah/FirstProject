@@ -51,9 +51,11 @@ const App = () => {
       <Button title='Clear Password' onPress={() => Setpassword('')}></Button>
       <FlatList data={users} renderItem={({ item }) => <Text style={styles.textbox}>{item.name}</Text>}
         keyExtractor={item => item.id} />
-      <ScrollView>{
-        emails.map((item) => <Text>{item.text}</Text>)
-      }</ScrollView>
+      <ScrollView>
+        <View style={styles.grid}>{
+          emails.map((item) => <Text style={styles.griditem}>{item.text}</Text>)
+        }</View>
+      </ScrollView>
     </View>
   );
 }
@@ -75,5 +77,19 @@ const styles = StyleSheet.create({
     borderColor: 'red',
     borderWidth: 5
   },
+  grid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  },
+  griditem: {
+    margin: 5,
+    padding: 5,
+    height: 100,
+    width: 200,
+    backgroundColor: 'blue',
+    color: 'white',
+    textAlign: 'center',
+    textAlignVertical: 'center'
+  }
 });
 export default App;
