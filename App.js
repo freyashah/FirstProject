@@ -56,10 +56,19 @@ const App = () => {
           emails.map((item) => <Text style={styles.griditem}>{item.text}</Text>)
         }</View>
       </ScrollView>
+      <FlatList data={emails} renderItem={({ item }) => <GridData itemlist = {item}/>}
+        keyExtractor={item => item.id} />
     </View>
   );
 }
 
+const GridData = (props) =>{
+  return(
+    <View style={styles.grid}>
+<Text style={styles.griditem}>{props.itemlist.text}</Text>
+    </View>
+  )
+}
 
 
 function fruit() {
@@ -79,13 +88,11 @@ const styles = StyleSheet.create({
   },
   grid: {
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   griditem: {
     margin: 5,
     padding: 5,
-    height: 100,
-    width: 200,
     backgroundColor: 'blue',
     color: 'white',
     textAlign: 'center',
