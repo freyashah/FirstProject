@@ -10,6 +10,8 @@ var email = 'xyz@gmail.com';
 const App = () => {
   const name = 'sima'
   const [GetName, SetName] = useState('Freya');
+  const [GetPassword, Setpassword] = useState('');
+  const [DisplayPassword, SetDisplayPassword] = useState(true);
   function ChangeName() {
     SetName('FreyaDShah')
   }
@@ -28,7 +30,10 @@ const App = () => {
       <FirstComponent name={GetName} />
       <TextInput style={ExStyles.textinput} value={GetName} placeholder='Enter Your Name' onChangeText={(text) => SetName(text)} />
       <CustomButton buttonTitle="Clear Input" />
-      <StatusBar style="auto" />
+      <TextInput style={ExStyles.textinput} value={GetPassword} placeholder='Enter Password' onChangeText={(text) => Setpassword(text)}
+        secureTextEntry={DisplayPassword} />
+      <Button title='View Password' onPress={() => SetDisplayPassword(!DisplayPassword)}></Button>
+      <Button title='Clear Password' onPress={() => Setpassword('')}></Button>
     </View>
   );
 }
