@@ -103,7 +103,7 @@ const App = () => {
         keyExtractor={item => item.id} />
       <SectionList horizontal={true} sections={studentreport} renderItem={({ item }) => <Text>{item.subject} - {item.marks} </Text>}
         renderSectionHeader={({ section: { name } }) => <Text>{name}</Text>} />
-      <Student />
+      <Student name={GetName} />
     </View>
   );
 }
