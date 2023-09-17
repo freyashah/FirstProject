@@ -4,6 +4,7 @@ import FirstComponent from './components/FirstComponent';
 import { useState } from 'react';
 import ExStyles from './css/MainCSS';
 import CustomButton from './components/CustomButton';
+import Student from './components/ClassComponent';
 
 let age = 39;
 var email = 'xyz@gmail.com';
@@ -27,7 +28,15 @@ const App = () => {
   {
     id: 2,
     text: 'dhruval@test.com'
-  },]
+  }]
+  const newemails = [{
+    id: 1,
+    text: 'freya@test.com'
+  },
+  {
+    id: 2,
+    text: 'dhruval@test.com'
+  }]
   const studentreport = [
     {
       id: 1,
@@ -90,10 +99,11 @@ const App = () => {
           emails.map((item) => <Text style={styles.griditem}>{item.text}</Text>)
         }</View>
       </ScrollView>
-      <FlatList data={emails} horizontal={true} renderItem={({ item }) => <GridData itemlist={item} />}
+      <FlatList data={newemails} horizontal={true} renderItem={({ item }) => <GridData itemlist={item} />}
         keyExtractor={item => item.id} />
       <SectionList horizontal={true} sections={studentreport} renderItem={({ item }) => <Text>{item.subject} - {item.marks} </Text>}
         renderSectionHeader={({ section: { name } }) => <Text>{name}</Text>} />
+      <Student />
     </View>
   );
 }
