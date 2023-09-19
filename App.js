@@ -89,7 +89,10 @@ const App = () => {
       <Text> State Name : {GetName} </Text>
       <CustomButton buttonTitle="Press Here" />
       <Button title="Update Name" onPress={ChangeName}></Button>
-      <FirstComponent name={GetName} />
+      {
+        GetName == 'Freya' ? <FirstComponent name={GetName} /> : null
+      }
+
       <TextInput style={ExStyles.textinput} value={GetName} placeholder='Enter Your Name'
         onChangeText={(text) => SetName(text)} />
       <CustomButton buttonTitle="Clear Input" />
