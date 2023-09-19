@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, TextInput, FlatList, ScrollView, SectionList } from 'react-native';
 import FirstComponent from './components/FirstComponent';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ExStyles from './css/MainCSS';
 import CustomButton from './components/CustomButton';
 import Student from './components/ClassComponent';
@@ -74,6 +74,9 @@ const App = () => {
   function ChangeName() {
     SetName('FreyaDShah')
   }
+  useEffect(() => {
+    console.warn('Component Mounted')
+  }, [])
   return (
     <View style={styles.container}>
       <Text style={[styles.textbox, ExStyles.textbox, { padding: 10, borderRadius: 10 }]}>{name}</Text>
