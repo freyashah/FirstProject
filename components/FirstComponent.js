@@ -1,5 +1,9 @@
+import { useEffect } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 const FirstComponent = (params) => {
+    useEffect(() => {
+        console.warn('props changed')
+    }, [params.name])
     return (
         <View style={{ backgroundColor: 'green', padding: 5 }}>
             <Text>

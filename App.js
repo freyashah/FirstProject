@@ -77,6 +77,9 @@ const App = () => {
   useEffect(() => {
     console.warn('Component Mounted')
   }, [])
+  useEffect(() => {
+    console.warn("state is updated")
+  }, [GetName, GetPassword])
   return (
     <View style={styles.container}>
       <Text style={[styles.textbox, ExStyles.textbox, { padding: 10, borderRadius: 10 }]}>{name}</Text>
