@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import ExStyles from './css/MainCSS';
 import CustomButton from './components/CustomButton';
 import Student from './components/ClassComponent';
+import RadioButton from './components/RadioButtion';
 
 let age = 39;
 var email = 'xyz@gmail.com';
@@ -97,6 +98,7 @@ const App = () => {
           <TouchableHighlight>
             <Text style={styles.touchablebutton}>Touchable button</Text>
           </TouchableHighlight>
+          <RadioButton />
         </View>
         <Text>Second box</Text>
       </View>
