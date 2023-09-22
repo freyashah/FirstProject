@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, TextInput, FlatList, ScrollView, SectionList } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, FlatList, ScrollView, SectionList, TouchableHighlight } from 'react-native';
 import FirstComponent from './components/FirstComponent';
 import { useEffect, useState } from 'react';
 import ExStyles from './css/MainCSS';
@@ -92,7 +92,14 @@ const App = () => {
           </Text>
         </View>
       </View>
-      <View style={styles.box2}><Text>Second box</Text></View>
+      <View style={styles.box2}>
+        <View style={styles.innerbox21}>
+          <TouchableHighlight>
+            <Text style={styles.touchablebutton}>Touchable button</Text>
+          </TouchableHighlight>
+        </View>
+        <Text>Second box</Text>
+      </View>
       <View style={styles.box3}>
         <Text style={[styles.textbox, ExStyles.textbox, { padding: 10, borderRadius: 10 }]}>{name}</Text>
         <Text>{fruit()}</Text>
@@ -173,7 +180,8 @@ const styles = StyleSheet.create({
   },
   box2: {
     flex: 1,
-    backgroundColor: 'yellow'
+    backgroundColor: 'yellow',
+    flexDirection: 'row'
   },
   box3: {
     flex: 1,
@@ -187,6 +195,23 @@ const styles = StyleSheet.create({
   innerbox2: {
     flex: 2,
     backgroundColor: 'red'
+  },
+  innerbox21: {
+    flex: 2,
+    backgroundColor: 'purple',
+    justifyContent: 'center',
+  },
+  touchablebutton: {
+    backgroundColor: 'grey',
+    color: 'white',
+    fontSize: 20,
+    margin: 5,
+    padding: 10,
+    borderRadius: 10,
+    shadowColor: 'red',
+    elevation: 3,
+    shadowOpacity: 1,
+    textAlign: 'center'
   }
 });
 export default App;
