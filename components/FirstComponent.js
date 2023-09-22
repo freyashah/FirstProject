@@ -4,6 +4,12 @@ const FirstComponent = (params) => {
     useEffect(() => {
         console.warn('props changed')
     }, [params.name])
+    let timer = setInterval(() => {
+        console.warn('2sec Interval')
+    }, 2000)
+    useEffect(() => {
+        return () => clearInterval(timer)
+    })
     return (
         <View style={{ backgroundColor: 'green', padding: 5 }}>
             <Text>
