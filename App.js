@@ -82,37 +82,50 @@ const App = () => {
   }, [GetName, GetPassword])
   return (
     <View style={styles.container}>
-      <Text style={[styles.textbox, ExStyles.textbox, { padding: 10, borderRadius: 10 }]}>{name}</Text>
-      <Text>{fruit()}</Text>
-      <Text>{3 * 2}</Text>
-      <Text>{age === 39 ? 'OldAge' : 'YoungAge'}</Text>
-      <Text> State Name : {GetName} </Text>
-      <CustomButton buttonTitle="Press Here" />
-      <Button title="Update Name" onPress={ChangeName}></Button>
-      {
-        GetName == 'Freya' ? <FirstComponent name={GetName} /> : null
-      }
+      <View style={styles.box1}>
+        <View style={styles.innerbox1}>
+          <Text>Inner box 1</Text>
+        </View>
+        <View style={styles.innerbox2}>
+          <Text>
+            Inner box 2
+          </Text>
+        </View>
+      </View>
+      <View style={styles.box2}><Text>Second box</Text></View>
+      <View style={styles.box3}>
+        <Text style={[styles.textbox, ExStyles.textbox, { padding: 10, borderRadius: 10 }]}>{name}</Text>
+        <Text>{fruit()}</Text>
+        <Text>{3 * 2}</Text>
+        <Text>{age === 39 ? 'OldAge' : 'YoungAge'}</Text>
+        <Text> State Name : {GetName} </Text>
+        <CustomButton buttonTitle="Press Here" />
+        <Button title="Update Name" onPress={ChangeName}></Button>
+        {
+          GetName == 'Freya' ? <FirstComponent name={GetName} /> : null
+        }
 
-      <TextInput style={ExStyles.textinput} value={GetName} placeholder='Enter Your Name'
-        onChangeText={(text) => SetName(text)} />
-      <CustomButton buttonTitle="Clear Input" />
-      <TextInput style={ExStyles.textinput} value={GetPassword} placeholder='Enter Password'
-        onChangeText={(text) => Setpassword(text)}
-        secureTextEntry={DisplayPassword} />
-      <Button title='View Password' onPress={() => SetDisplayPassword(!DisplayPassword)}></Button>
-      <Button title='Clear Password' onPress={() => Setpassword('')}></Button>
-      <FlatList data={users} horizontal={true} renderItem={({ item }) => <Text style={styles.textbox}>{item.name}</Text>}
-        keyExtractor={item => item.id} />
-      <ScrollView>
-        <View style={styles.grid}>{
-          emails.map((item) => <Text style={styles.griditem}>{item.text}</Text>)
-        }</View>
-      </ScrollView>
-      <FlatList data={newemails} horizontal={true} renderItem={({ item }) => <GridData itemlist={item} />}
-        keyExtractor={item => item.id} />
-      <SectionList horizontal={true} sections={studentreport} renderItem={({ item }) => <Text>{item.subject} - {item.marks} </Text>}
-        renderSectionHeader={({ section: { name } }) => <Text>{name}</Text>} />
-      <Student name={GetName} />
+        <TextInput style={ExStyles.textinput} value={GetName} placeholder='Enter Your Name'
+          onChangeText={(text) => SetName(text)} />
+        <CustomButton buttonTitle="Clear Input" />
+        <TextInput style={ExStyles.textinput} value={GetPassword} placeholder='Enter Password'
+          onChangeText={(text) => Setpassword(text)}
+          secureTextEntry={DisplayPassword} />
+        <Button title='View Password' onPress={() => SetDisplayPassword(!DisplayPassword)}></Button>
+        <Button title='Clear Password' onPress={() => Setpassword('')}></Button>
+        <FlatList data={users} horizontal={true} renderItem={({ item }) => <Text style={styles.textbox}>{item.name}</Text>}
+          keyExtractor={item => item.id} />
+        <ScrollView>
+          <View style={styles.grid}>{
+            emails.map((item) => <Text style={styles.griditem}>{item.text}</Text>)
+          }</View>
+        </ScrollView>
+        <FlatList data={newemails} horizontal={true} renderItem={({ item }) => <GridData itemlist={item} />}
+          keyExtractor={item => item.id} />
+        <SectionList horizontal={true} sections={studentreport} renderItem={({ item }) => <Text>{item.subject} - {item.marks} </Text>}
+          renderSectionHeader={({ section: { name } }) => <Text>{name}</Text>} />
+        <Student name={GetName} />
+      </View>
     </View>
   );
 }
@@ -134,8 +147,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'pink',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
   textbox: {
     borderColor: 'red',
@@ -152,6 +165,28 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     textAlignVertical: 'center'
+  },
+  box1: {
+    flex: 1,
+    backgroundColor: 'blue',
+    flexDirection: 'row'
+  },
+  box2: {
+    flex: 1,
+    backgroundColor: 'yellow'
+  },
+  box3: {
+    flex: 1,
+    backgroundColor: 'orange'
+  },
+  innerbox1: {
+    flex: 1,
+    backgroundColor: 'pink',
+    margin: 10
+  },
+  innerbox2: {
+    flex: 2,
+    backgroundColor: 'red'
   }
 });
 export default App;
