@@ -126,7 +126,7 @@ const App = () => {
           keyExtractor={item => item.id} />
         <ScrollView>
           <View style={styles.grid}>{
-            emails.map((item) => <Text style={styles.griditem}>{item.text}</Text>)
+            emails.map((item, index) => <Text key={index} style={styles.griditem}>{item.text}</Text>)
           }</View>
         </ScrollView>
         <FlatList data={newemails} horizontal={true} renderItem={({ item }) => <GridData itemlist={item} />}
