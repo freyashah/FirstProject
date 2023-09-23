@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, TextInput, FlatList, ScrollView, SectionList, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, FlatList, ScrollView, SectionList, TouchableHighlight, Pressable } from 'react-native';
 import FirstComponent from './components/FirstComponent';
 import { useEffect, useState } from 'react';
 import ExStyles from './css/MainCSS';
@@ -98,6 +98,10 @@ const App = () => {
           <TouchableHighlight>
             <Text style={styles.touchablebutton}>Touchable button</Text>
           </TouchableHighlight>
+          <Pressable onPress={() => console.warn("button pressed")} onLongPress={() => console.warn("long pressed")}
+            onPressIn={() => console.warn("press in")} onPressOut={() => console.warn("press out")}>
+            <Text style={styles.pressableBtn}>Pressable button</Text>
+          </Pressable>
           <RadioButton />
         </View>
         <Text>Second box</Text>
@@ -213,7 +217,21 @@ const styles = StyleSheet.create({
     shadowColor: 'red',
     elevation: 3,
     shadowOpacity: 1,
-    textAlign: 'center'
+    textAlign: 'center',
+    overflow: 'hidden'
+  },
+  pressableBtn: {
+    backgroundColor: 'skyblue',
+    textAlign: 'center',
+    fontSize: 20,
+    margin: 10,
+    padding: 5,
+    width: 200,
+    borderRadius: 5,
+    shadowColor: 'black',
+    shadowOpacity: 1,
+    elevation: 5,
+    overflow: 'hidden'
   }
 });
 export default App;
