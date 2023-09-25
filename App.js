@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, TextInput, FlatList, ScrollView, SectionList, TouchableHighlight, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, FlatList, ScrollView, SectionList, TouchableHighlight, Pressable, Platform } from 'react-native';
 import FirstComponent from './components/FirstComponent';
 import { useEffect, useState } from 'react';
 import ExStyles from './css/MainCSS';
@@ -88,9 +88,14 @@ const App = () => {
           <Text>Inner box 1</Text>
         </View>
         <View style={styles.innerbox2}>
-          <Text>
-            Inner box 2
+          <Text style={styles.OSStyle}>
+            {JSON.stringify(Platform)}
+            {JSON.stringify(Platform.constants.reactNativeVersion.minor)}
           </Text>
+          {
+            Platform.OS == 'android' ? <Text style={{ backgroundColor: 'blue' }}>hiii {Platform.OS}</Text> :
+              <Text style={{ backgroundColor: 'purple' }}>Hii {Platform.OS}</Text>
+          }
         </View>
       </View>
       <View style={styles.box2}>
@@ -104,7 +109,7 @@ const App = () => {
           </Pressable>
           <RadioButton />
         </View>
-        <Text>Second box</Text>
+        <Text>{Platform.OS}</Text>
       </View>
       <View style={styles.box3}>
         <Text style={[styles.textbox, ExStyles.textbox, { padding: 10, borderRadius: 10 }]}>{name}</Text>
@@ -232,6 +237,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     elevation: 5,
     overflow: 'hidden'
+  },
+  OSStyle: {
+    color: Platform.OS == 'android' ? 'white' : 'blue'
   }
 });
 export default App;

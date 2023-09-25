@@ -5,7 +5,7 @@ const FirstComponent = (params) => {
         console.warn('props changed')
     }, [params.name])
     let timer = setInterval(() => {
-        console.warn('2sec Interval')
+        //console.warn('2sec Interval')
     }, 2000)
     useEffect(() => {
         return () => clearInterval(timer)
