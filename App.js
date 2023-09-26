@@ -1,8 +1,9 @@
-import { View, Text } from "react-native"
+import { View, Text, Button } from "react-native"
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import Example from "../FirstProject/components/ExampleScreen"
 import Login from "../FirstProject/components/LoginComponent"
+import HeaderComponent from "./components/HeaderComponent"
 
 const Stack = createNativeStackNavigator();
 const App = () => {
@@ -25,7 +26,9 @@ const App = () => {
           headerTitleStyle: {
             fontSize: 20
           },
-          headerTintColor: 'white'
+          headerTintColor: 'white',
+          headerLeft: () => <Button color="white" title="#" />,
+          headerRight: () => <HeaderComponent />
         }} />
         <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
