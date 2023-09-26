@@ -7,6 +7,7 @@ import CustomButton from './components/CustomButton';
 import Student from './components/ClassComponent';
 import RadioButton from './components/RadioButtion';
 import { WebView } from 'react-native-webview'
+import CustomModal from './components/CustomModal';
 
 let age = 39;
 var email = 'xyz@gmail.com';
@@ -15,7 +16,8 @@ const App = () => {
   const [GetName, SetName] = useState('Freya');
   const [GetPassword, Setpassword] = useState('');
   const [DisplayPassword, SetDisplayPassword] = useState(true);
-  const [OpenWebView, SetOpenWebView] = useState(false)
+  const [OpenWebView, SetOpenWebView] = useState(false);
+  const [showCustomModal, setShowCustomModal] = useState(false);
   const users = [{
     id: 1,
     name: 'freya'
@@ -118,6 +120,12 @@ const App = () => {
             <Text>{Platform.OS}</Text>
           </View>
           <View style={styles.box3}>
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+              {
+                showCustomModal ? <CustomModal /> : null
+              }
+            </View>
+            <Button title="Open Custom modal" onPress={() => setShowCustomModal(!showCustomModal)} />
             <Text style={[styles.textbox, ExStyles.textbox, { padding: 10, borderRadius: 10 }]}>{name}</Text>
             <Text>{fruit()}</Text>
             <Text>{3 * 2}</Text>
