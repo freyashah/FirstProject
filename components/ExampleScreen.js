@@ -125,7 +125,7 @@ const Example = (props) => {
                 showCustomModal ? <CustomModal /> : null
               }
             </View>
-            <Button title='Next Screen' onPress={() => props.navigation.navigate('Login')}/>
+            <Button title='Next Screen' onPress={() => props.navigation.navigate('Login')} />
             <Button title="Open Custom modal" onPress={() => setShowCustomModal(!showCustomModal)} />
             <Text style={[styles.textbox, ExStyles.textbox, { padding: 10, borderRadius: 10 }]}>{name}</Text>
             <Text>{fruit()}</Text>
