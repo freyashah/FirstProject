@@ -18,7 +18,7 @@ const App = () => {
         },
         headerTintColor: 'white'
       }}>
-        <Stack.Screen name="Example Screen" component={Example} options={{
+        <Stack.Screen name="Example Screen" component={Example} options={({ navigation }) => ({
           title: "Syntax Screen",
           headerStyle: {
             backgroundColor: 'purple'
@@ -27,9 +27,9 @@ const App = () => {
             fontSize: 20
           },
           headerTintColor: 'white',
-          headerLeft: () => <Button color="white" title="#" />,
+          headerLeft: () => <Button color="white" title="#" onPress={() => navigation.navigate('Login')} />,
           headerRight: () => <HeaderComponent />
-        }} />
+        })} />
         <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
     </NavigationContainer>
