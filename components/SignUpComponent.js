@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { View, Text, StyleSheet, ScrollView } from "react-native"
+import { View, Text, StyleSheet, ScrollView, FlatList } from "react-native"
 
 
 const SignUp = () => {
@@ -23,6 +23,10 @@ const SignUp = () => {
                     <View>{
                         data.map((item, index) => <Text key={index}>{item.title}</Text>)
                     }</View>
+                    <View>
+                        <FlatList data={data} horizontal={true} renderItem={({ item }) => <Text> Id : {item.id}</Text>}
+                            keyExtractor={item => item.id} />
+                    </View>
                 </ScrollView>
                     : null
             }
