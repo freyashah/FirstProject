@@ -5,6 +5,7 @@ import SignUp from './SignUpComponent'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import Example from './ExampleScreen'
 import { useEffect, useState } from 'react'
+import Grid from './GridComponent'
 
 const Tab = createBottomTabNavigator()
 const TopTab = createMaterialTopTabNavigator()
@@ -64,6 +65,7 @@ const Nested = () => {
             <TopTab.Navigator>
                 <TopTab.Screen name='Top Signup' component={SignUp} />
                 <TopTab.Screen name='Top Example' component={Example} />
+                <TopTab.Screen name='Data' component={Grid} />
             </TopTab.Navigator>
         </NavigationContainer>
     )
