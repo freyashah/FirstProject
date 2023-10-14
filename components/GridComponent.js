@@ -20,10 +20,10 @@ const Grid = () => {
     return (
         <ScrollView style={{ flex: 1 }}>
             <View style={styles.wrapper}>
-                <View style={{ flex: 2 }}><Text style={{ padding: 10 }}>Name</Text></View>
+                <View style={{ flex: 2 }}><Text style={{ padding: 10, textTransform: 'uppercase' }}>Name</Text></View>
                 <View style={{ flex: 1.5 }}><Text style={{ padding: 10 }}>Operations</Text></View></View>
             {data ? data.map((item, index) => <View style={styles.wrapper}>
-                <View style={{ flex: 1 }}><Text style={{ padding: 10 }} key={index}>{item.name}</Text></View>
+                <View style={{ flex: 1 }}><Text style={{ padding: 10, textAlign: "center" }} key={index}>{item.name}</Text></View>
                 <View style={{ flex: 1 }}><Button title='Update' /></View>
                 <View style={{ flex: 1 }}><Button title='Delete' /></View></View>
             )
