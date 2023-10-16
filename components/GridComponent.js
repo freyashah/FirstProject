@@ -17,6 +17,17 @@ const Grid = () => {
         }
     }
 
+    const DeleteData = async (id) => {
+        const url = 'http://192.168.29.140:3000/users';
+        let result = await fetch(`${url}/${id}`, {
+            method: "delete"
+        })
+        result = await result.json();
+        if (result) {
+            GetData();
+        }
+    }
+
     return (
         <ScrollView style={{ flex: 1 }}>
             <View style={styles.wrapper}>
@@ -25,7 +36,7 @@ const Grid = () => {
             {data ? data.map((item, index) => <View style={styles.wrapper}>
                 <View style={{ flex: 1 }}><Text style={{ padding: 10, textAlign: "center" }} key={index}>{item.name}</Text></View>
                 <View style={{ flex: 1 }}><Button title='Update' /></View>
-                <View style={{ flex: 1 }}><Button title='Delete' /></View></View>
+                <View style={{ flex: 1 }}><Button title='Delete' onPress={() => DeleteData(item.id)} /></View></View>
             )
                 : null}
         </ScrollView>
