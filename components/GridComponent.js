@@ -47,7 +47,7 @@ const Grid = () => {
             )
                 : null}
             <Modal transparent={true} visible={showModal}>
-                <ModalComponent setShowModal={setShowModal} selectedData={selectedData} />
+                <ModalComponent setShowModal={setShowModal} selectedData={selectedData} GetData={GetData} />
             </Modal>
         </ScrollView>
     )
@@ -59,18 +59,34 @@ const ModalComponent = (props) => {
         setName(props.selectedData.name)
     }, [props.selectedData])
 
+    const UpdateData = async () => {
+        props.setShowModal(false);
+        const url = 'http://192.168.29.140:3000/users'
+        let result = await fetch(`${url}/${props.selectedData.id}`, {
+            method: "Put",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name })
+        })
+        result = await result.json()
+        if (result) {
+            console.warn("Record updated successfully")
+            props.GetData();
+        }
+    }
+
     return (
         <View style={styles.mainView}>
             <View style={styles.modalView}>
                 <Text style={{ marginBottom: 10 }}>{props.selectedData.name}</Text>
                 <TextInput style={styles.input} placeholder="Enter Name" value={name} onChangeText={(text) => setName(text)} />
                 <View style={[styles.button, { marginBottom: 10 }]}>
-                    <Button title="Update" color={'white'} />
+                    <Button title="Update" color={'white'} onPress={UpdateData} />
                 </View>
                 <View style={styles.button}>
                     <Button title="Close" color={'white'} onPress={() => props.setShowModal(false)} />
                 </View>
-
             </View>
         </View>
     )
