@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Button, ScrollView, View, Text, StyleSheet, Modal } from "react-native"
+import { Button, ScrollView, View, Text, StyleSheet, Modal, TextInput } from "react-native"
 
 const Grid = () => {
     const [data, setData] = useState();
@@ -53,11 +53,24 @@ const Grid = () => {
     )
 }
 const ModalComponent = (props) => {
+    const [name, setName] = useState(undefined);
+
+    useEffect(() => {
+        setName(props.selectedData.name)
+    }, [props.selectedData])
+
     return (
         <View style={styles.mainView}>
             <View style={styles.modalView}>
-                <Text>{props.selectedData.name}</Text>
-                <Button title="Close" onPress={() => props.setShowModal(false)} />
+                <Text style={{ marginBottom: 10 }}>{props.selectedData.name}</Text>
+                <TextInput style={styles.input} placeholder="Enter Name" value={name} onChangeText={(text) => setName(text)} />
+                <View style={[styles.button, { marginBottom: 10 }]}>
+                    <Button title="Update" color={'white'} />
+                </View>
+                <View style={styles.button}>
+                    <Button title="Close" color={'white'} onPress={() => props.setShowModal(false)} />
+                </View>
+
             </View>
         </View>
     )
@@ -77,11 +90,21 @@ const styles = StyleSheet.create({
     },
     modalView: {
         backgroundColor: '#fff',
-        padding: 60,
+        padding: 20,
         borderRadius: 10,
         shadowColor: 'blue',
         shadowOpacity: 0.5,
-        alignItems: 'center'
+        // alignItems: 'center'
+    },
+    input: {
+        width: 300,
+        marginBottom: 10,
+        borderWidth: 1,
+        borderColor: 'skyblue',
+        fontSize: 20,
+    },
+    button: {
+        backgroundColor: 'skyblue',
     }
 })
 export default Grid
