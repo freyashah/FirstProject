@@ -35,8 +35,19 @@ const Grid = () => {
         setSelectedData(data)
     }
 
+    const SearchData = async (data) => {
+        const url = `http://192.168.29.140:3000/users?q=${data}`;
+        let result = await fetch(url);
+        result = await result.json();
+        if (result) {
+            setData(result)
+        }
+    }
+
     return (
         <ScrollView style={{ flex: 1 }}>
+            <TextInput placeholder="Search" style={[styles.input, { marginTop: 10, marginLeft: 10, fontSize: 20 }]}
+                onChangeText={(text) => SearchData(text)} />
             <View style={styles.wrapper}>
                 <View style={{ flex: 2 }}><Text style={{ padding: 10, textTransform: 'uppercase' }}>Name</Text></View>
                 <View style={{ flex: 1.5 }}><Text style={{ padding: 10 }}>Operations</Text></View></View>
