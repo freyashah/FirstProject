@@ -8,6 +8,7 @@ import Student from '../components/ClassComponent';
 import RadioButton from '../components/RadioButtion';
 import { WebView } from 'react-native-webview'
 import CustomModal from '../components/CustomModal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 let age = 39;
 var email = 'xyz@gmail.com';
@@ -18,6 +19,7 @@ const Example = (props) => {
   const [DisplayPassword, SetDisplayPassword] = useState(true);
   const [OpenWebView, SetOpenWebView] = useState(false);
   const [showCustomModal, setShowCustomModal] = useState(false);
+  const [asyncName, setAsyncName] = useState('')
   const input = useRef();
   const users = [{
     id: 1,
@@ -92,6 +94,20 @@ const Example = (props) => {
     console.warn("state is updated")
   }, [GetName, GetPassword])
 
+  const setAsyncData = async () => {
+    await AsyncStorage.setItem("asyncname", "Async freya");
+  }
+
+  const getAsyncData = async () => {
+    const name = await AsyncStorage.getItem("asyncname");
+    setAsyncName(name)
+  }
+
+  const removeAsyncData = async () => {
+    AsyncStorage.removeItem("asyncname");
+    setAsyncName('')
+  }
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -100,7 +116,10 @@ const Example = (props) => {
           <View style={styles.container}>
             <View style={styles.box1}>
               <View style={styles.innerbox1}>
-                <Text>Inner box 1</Text>
+                <Text>Inner box 1 {asyncName}</Text>
+                <Button title='Set Async Storage' onPress={setAsyncData}></Button>
+                <Button title='Get Async Storage' onPress={getAsyncData}></Button>
+                <Button title='Remove Async Storage' onPress={removeAsyncData}></Button>
               </View>
               <View style={styles.innerbox2}>
                 <Text style={styles.OSStyle}>
